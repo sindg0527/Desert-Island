@@ -23,12 +23,12 @@ public class BulletManager : MonoBehaviour
         }
         else if (playerController.dir == 2)
         {
-            rigid.AddForce(new Vector2(0, -BulletSpeed), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector2(0, BulletSpeed), ForceMode2D.Impulse);
             transform.localEulerAngles = new Vector3(0, 0, 90);
         }
         else if (playerController.dir == 3)
         {
-            rigid.AddForce(new Vector2(0, BulletSpeed), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector2(0, -BulletSpeed), ForceMode2D.Impulse);
             transform.localEulerAngles = new Vector3(0, 0, 90);
         }
 

@@ -53,14 +53,14 @@ public class PlayerController : MonoBehaviour
         {
             dir = 2;
             PlayerImage(dir);
-            weaponObj.transform.localEulerAngles = new Vector3(0, 0, 270);
+            weaponObj.transform.localEulerAngles = new Vector3(0, 0, 90);
             //transform.localEulerAngles = new Vector3(0, 0, 0);
         }
         if (move.y < 0)
         {
             dir = 3;
             PlayerImage(dir);
-            weaponObj.transform.localEulerAngles = new Vector3(0, 0, 90);
+            weaponObj.transform.localEulerAngles = new Vector3(0, 0, 270);
             //transform.localEulerAngles = new Vector3(0, 0, 0);
         }
     }

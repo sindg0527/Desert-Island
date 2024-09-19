@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LivingTools : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
-    public GameObject[] tools;
-
     void Start()
     {
         

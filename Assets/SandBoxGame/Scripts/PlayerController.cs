@@ -2,29 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     float speed = 5.0f;
     Vector3 move;
-    public GameObject bulletObj;
-    public GameObject weaponObj;
-    public Transform bulletPos;
-    public int dir;
-    SpriteRenderer playerImage;
-    public Sprite[] rotationImage;
+    //public GameObject bulletObj;
+    //public GameObject weaponObj;
+    //public Transform bulletPos;
+    //public int dir;
+    //SpriteRenderer playerImage;
+    //public Sprite[] rotationImage;
+
+    Animator animator;
 
     private void Start()
     {
-        dir = 0;
-        playerImage = GetComponent<SpriteRenderer>();
+        //dir = 0;
+        //playerImage = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        transform.Translate(new Vector3(move.x, move.y, 0) * speed * Time.deltaTime);
-        Rotation();
+        transform.Translate(new Vector3(Mathf.Abs(move.x), move.y, 0) * speed * Time.deltaTime);
+        Rotation(); //플레이어 회전
     }
 
     void OnMovement(InputValue value)
@@ -32,61 +36,37 @@ public class PlayerController : MonoBehaviour
         move = value.Get<Vector2>();
     }
 
-    void Rotation()
+    void Rotation() //플레이어 회전 및 애니메이션
     {
-        if (move.x > 0)
+        if (move.x > 0) //오른쪽
         {
-            dir = 0;
-            PlayerImage(dir);
-            weaponObj.transform.localEulerAngles = new Vector3(0, 0, 0);
-            //transform.localEulerAngles = new Vector3(0, 0, 0);
+            transform.localEulerAngles = new Vector3(0, 0, 0);
+            //animator.SetFloat("isHorizontal", move.x);
+            Debug.Log("오른쪽" + move.x);
         }
-        if (move.x < 0)
+        else if (move.x < 0) //왼쪽
         {
-            dir = 1;
-            PlayerImage(dir);
-            weaponObj.transform.localEulerAngles = new Vector3(0, 180, 0);
-            //weaponObj.transform.position = new Vector3(-0.187f, -0.137f, 0);
-            //transform.localEulerAngles = new Vector3(0, 180, 0);
+            transform.localEulerAngles = new Vector3(0, 180, 0);
+            //animator.SetFloat("isHorizontal", move.x);
+            Debug.Log("왼쪽" + move.x);
         }
-        if (move.y > 0)
+        else if (move.y > 0) //위
         {
-            dir = 2;
-            PlayerImage(dir);
-            weaponObj.transform.localEulerAngles = new Vector3(0, 0, 90);
-            //transform.localEulerAngles = new Vector3(0, 0, 0);
+            //animator.SetFloat("isUp", move.y);
+            Debug.Log("위쪽" + move.y);
         }
-        if (move.y < 0)
+        else if (move.y < 0) //아래
         {
-            dir = 3;
-            PlayerImage(dir);
-            weaponObj.transform.localEulerAngles = new Vector3(0, 0, 270);
-            //transform.localEulerAngles = new Vector3(0, 0, 0);
+            //animator.SetFloat("isDown", Mathf.Abs(move.y));
+            Debug.Log("아래쪽" + Mathf.Abs(move.y));
         }
+        animator.SetFloat("isHorizontal", move.x);
+        animator.SetFloat("isUp", move.y);
+        animator.SetFloat("isDown", Mathf.Abs(move.y));
     }
 
     void OnFire()
     {
-        Instantiate(bulletObj, bulletPos.transform.position, Quaternion.identity);
-    }
-
-    void PlayerImage(int count)
-    {
-        if (count == 0)
-        {
-            playerImage.sprite = rotationImage[0];
-        }
-        if (count == 1)
-        {
-            playerImage.sprite = rotationImage[1];
-        }
-        if (count == 2)
-        {
-            playerImage.sprite = rotationImage[2];
-        }
-        if (count == 3)
-        {
-            playerImage.sprite = rotationImage[3];
-        }
+        //Instantiate(bulletObj, bulletPos.transform.position, Quaternion.identity);
     }
 }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80db3f58fa688ad4886e767c2da1efd3, type: 3}
-  m_Name: Axe
+  m_Name: Shovel
   m_EditorClassIdentifier: 
-  itemName: "\uB3C4\uB07C"
-  itemDesc: "\uB3C4\uB07C\uC785\uB2C8\uB2E4."
+  itemName: "\uC0BD"
+  itemDesc: "\uC0BD\uC785\uB2C8\uB2E4."
   itemType: 0
-  itemImage: {fileID: 6674386295937086461, guid: 26dd48c04f1021b47a4f60792f5f4434, type: 3}
+  itemImage: {fileID: -3766519690804746565, guid: d34ebf13bc83912449c4802111cc6e71, type: 3}
   itemPrefab: {fileID: 0}
   weaponType: 

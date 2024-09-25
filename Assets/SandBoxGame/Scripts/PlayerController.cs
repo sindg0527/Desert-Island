@@ -4,6 +4,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+//using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
 {
@@ -31,27 +32,27 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         transform.Translate(new Vector3(move.x, move.y, 0) * speed * Time.deltaTime);
-        Rotation(); //플레이어 회전
     }
 
     void OnMovement(InputValue value)
     {
         Vector2 input = value.Get<Vector2>(); //(x, y)
+
         if (input != null)
         {
-            animator.SetBool("isRun", true);
-            animator.SetBool("isIdle", false);
-
             move = new Vector3(input.x, input.y, 0); //(1, 0, 0), (-1, 0, 0)
+            RotationAnimation(); //플레이어 회전
+            animator.SetBool("isMove", true);
+            animator.SetBool("isIdle", false);
         }
-        if (input.x == 0 && input.y == 0)
+        if (move.x == 0 && move.y == 0)
         {
             animator.SetBool("isIdle", true);
             animator.SetBool("isMove", false);
         }
     }
 
-    void Rotation() //플레이어 회전 및 애니메이션
+    void RotationAnimation() //플레이어 회전 및 애니메이션
     {
         if (move.x > 0) //오른쪽
         {
@@ -90,11 +91,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)  // 아이템에 접촉 시 트리거 발생
     {
-        if (Input.GetKeyDown(KeyCode.G))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (collision.CompareTag("Item"))  //태그가 아이템이면 pickupActivated True
+            Debug.Log("E 버튼 클릭");
+            if (collision.gameObject.tag == "Item")  //태그가 아이템이면 pickupActivated True
             {
-
                 if (collision.transform != null)
                 {
                     Debug.Log(collision.transform.GetComponent<ItemPickUp>().item.itemName + " 획득 했습니다.");

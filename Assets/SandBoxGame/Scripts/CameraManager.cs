@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour
 {
+    public static CameraManager instance;
+
     //플레이어의 Transform 저장 변수
     public Transform playerTr;
 
@@ -17,10 +19,24 @@ public class CameraManager : MonoBehaviour
 
     //카메라 시야를 설정하는 변수
     public float cameraFOV = 60f;
+    public bool isShake = false;
 
     //카메라의 반경
     private float cameraHalfWidth;
     private float cameraHalfHeight;
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

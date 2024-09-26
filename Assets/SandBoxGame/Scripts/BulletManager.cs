@@ -6,12 +6,10 @@ public class BulletManager : MonoBehaviour
 {
     float BulletSpeed = 10.0f;
     Rigidbody2D rigid;
-    PlayerController playerController;
 
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
-        playerController = FindObjectOfType<PlayerController>();
 
         //if (playerController.dir == 0)
         //{

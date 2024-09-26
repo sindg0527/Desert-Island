@@ -1,37 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 //using UnityEngine.Windows;
 
-public class PlayerController : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
-    float speed = 5.0f;
+    public static PlayerManager Instance;
+
+    [Header("-----Player Settings-----")]
+    public float playerSpeed = 5.0f;
+    public int playerHP = 100;
+    public bool isDamage = false;
+    public bool isDie = false;
+    public bool isAction = false;
+
     Vector3 move;
-    //public GameObject bulletObj;
-    //public GameObject weaponObj;
-    //public Transform bulletPos;
-    //public int dir;
-    //SpriteRenderer playerImage;
-    //public Sprite[] rotationImage;
+    SpriteRenderer spriteRenderer;
+    public LayerMask ItemMask;
 
     Animator animator;
 
     [SerializeField]
     private Inventory theInventory;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
-        //dir = 0;
-        //playerImage = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        transform.Translate(new Vector3(move.x, move.y, 0) * speed * Time.deltaTime);
+        transform.Translate(new Vector3(move.x, move.y, 0) * playerSpeed * Time.deltaTime);
     }
 
     void OnMovement(InputValue value)
@@ -89,12 +105,48 @@ public class PlayerController : MonoBehaviour
         //Instantiate(bulletObj, bulletPos.transform.position, Quaternion.identity);
     }
 
+    IEnumerator DamageCount() //무적시간
+    {
+        playerSpeed = 2.0f;
+        yield return new WaitForSeconds(0.5f); //이후 코드를 일정시간이 지나고 실행
+        isDamage = false;
+        playerSpeed = 3.0f;
+        spriteRenderer.material.color = Color.white;
+    }
+
+    //플레이어 피격
+    public void PlayerDamage(int damage)
+    {
+        if (!isDamage)
+        {
+            if (playerHP <= 0) //체력이 0이하가 될 때
+            {
+                isDie = true;
+                playerHP = 0;
+            }
+            playerHP -= damage;
+            SoundManager.instance.PlaySFX("hit");
+            WeaponManager.instance.shakeDuration = 0.1f;
+            WeaponManager.instance.shakeMagnitude = 0.2f;
+            StartCoroutine(WeaponManager.instance.Shake(WeaponManager.instance.shakeDuration, WeaponManager.instance.shakeMagnitude));
+
+            spriteRenderer.material.color = Color.red;
+            StartCoroutine(DamageCount()); //코루틴 실행
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)  // 아이템에 접촉 시 트리거 발생
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("E 버튼 클릭");
-            if (collision.gameObject.tag == "Item")  //태그가 아이템이면 pickupActivated True
+
+            //레이 캐스트로 비교
+            //RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, ItemMask);
+            //transform.rotation = Quaternion.Euler(0, 0, 0);
+            //if (hit.collider != null && hit.collider.tag != "Player")
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Item"))
             {
                 if (collision.transform != null)
                 {

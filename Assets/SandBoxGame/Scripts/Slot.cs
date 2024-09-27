@@ -15,11 +15,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     [SerializeField]
     private GameObject go_CountImage;
 
-    void Start()
-    {
-
-    }
-
     // 아이템 이미지의 투명도 조절
     private void SetColor(float _alpha)
     {
@@ -78,10 +73,14 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
             if (item != null)
             {
                 // 소모품일 경우 사용
-                if (item.itemType == Item.ItemType.Used)
+                if(item.itemType == Item.ItemType.Used)
                 {
                     Debug.Log(item.itemName + " 을 사용했습니다.");
                     SetSlotCount(-1);
+                }
+                else if (item.itemType == Item.ItemType.Equipment)
+                {
+                    //PlayerManager.Instance.Geti
                 }
             }
         }

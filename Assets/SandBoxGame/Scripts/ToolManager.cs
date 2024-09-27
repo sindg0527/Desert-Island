@@ -13,7 +13,6 @@ public class ToolManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("E Key");
         Debug.DrawLine(transform.position, transform.right, Color.red, 1.0f);
         RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, toolMask);
         transform.rotation = Quaternion.Euler(0, 0, 0);

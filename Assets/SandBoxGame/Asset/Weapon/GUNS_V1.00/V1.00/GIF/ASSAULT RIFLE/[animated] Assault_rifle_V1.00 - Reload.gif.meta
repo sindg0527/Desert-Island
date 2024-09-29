@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '[animated] Assault_rifle_V1.00 - Reload_0': -9066962678784957027
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

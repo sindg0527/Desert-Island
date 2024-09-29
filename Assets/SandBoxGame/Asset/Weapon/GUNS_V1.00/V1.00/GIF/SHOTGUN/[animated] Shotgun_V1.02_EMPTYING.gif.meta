@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '[animated] Shotgun_V1.02_EMPTYING_0': -2867906542100344033
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

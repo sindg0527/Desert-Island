@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '[animated] Pistol_V1.00_EMPTYING_0': 133474496482128843
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

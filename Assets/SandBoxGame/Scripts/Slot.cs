@@ -80,7 +80,17 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                 }
                 else if (item.itemType == Item.ItemType.Equipment)
                 {
-                    //PlayerManager.Instance.Geti
+                    Debug.Log(item.itemName + " 을 장착했습니다.");
+                    if(ToolManager.instance.GetItem == null)
+                    {
+                        ToolManager.instance.GetItem = item.itemPrefab;
+                        ClearSlot();
+                    }
+                    else
+                    {
+                        //AddItem(ToolManager.instance.GetItem, 1);
+                        ToolManager.instance.GetItem = item.itemPrefab;
+                    }
                 }
             }
         }
@@ -121,7 +131,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         }
     }
 
-    // 슬롯을 드래그 드롭하여 서로 자리를 바꾸기 위한 
+    // 슬롯을 드래그 드롭하여 서로 자리를 바꾸기 위한 함수
     private void ChangeSlot()
     {
         Item _tempItem = item;

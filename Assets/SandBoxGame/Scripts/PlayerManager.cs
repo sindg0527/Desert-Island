@@ -18,14 +18,10 @@ public class PlayerManager : MonoBehaviour
     public bool isDie = false;
     public bool isAction = false;
 
-    Vector3 move;
+    public Vector3 move;
     SpriteRenderer spriteRenderer;
-    public LayerMask ItemMask;
 
     Animator animator;
-
-    [SerializeField]
-    private Inventory theInventory;
 
     private void Awake()
     {
@@ -49,22 +45,6 @@ public class PlayerManager : MonoBehaviour
     {
         transform.Translate(new Vector3(move.x, move.y, 0) * playerSpeed * Time.deltaTime);
         RotationAnimation();
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Debug.Log("E 버튼 클릭");
-
-            //레이 캐스트로 비교
-            RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.right, 1, ItemMask);
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-
-            if (hit.collider != null && hit.collider.tag != "Player")
-            {
-                Debug.Log(hit.collider.GetComponent<ItemPickUp>().item.itemName + " 획득 했습니다.");
-                theInventory.AcquireItem(hit.collider.GetComponent<ItemPickUp>().item);  // 인벤토리 넣기
-                Destroy(hit.collider.gameObject);
-            }
-        }
     }
 
     void OnMovement(InputValue value)
@@ -74,14 +54,10 @@ public class PlayerManager : MonoBehaviour
         if (input != null)
         {
             move = new Vector3(input.x, input.y, 0); //(1, 0, 0), (-1, 0, 0)
-            //RotationAnimation(); //플레이어 회전
             animator.SetBool("isMove", true);
-            //animator.SetBool("isIdle", false);
         }
         if (move.x == 0 && move.y == 0)
         {
-            //animator.SetBool("isIdle", true);
-            //animator.SetBool("isMove", false);
             animator.SetBool("isMove", false);
         }
     }
@@ -90,41 +66,21 @@ public class PlayerManager : MonoBehaviour
     {
         if (move.x > 0) //오른쪽
         {
-            //animator.SetBool("isRight", true);
-            //animator.SetBool("isLeft", false);
-            //animator.SetBool("isBack", false);
-            //animator.SetBool("isFront", false);
-            Debug.DrawRay(transform.position, transform.right, Color.red, 0.5f);
             animator.SetFloat("xDir", move.x);
             animator.SetFloat("yDir", 0);
         }
         else if (move.x < 0) //왼쪽
         {
-            //animator.SetBool("isRight", false);
-            //animator.SetBool("isLeft", true);
-            //animator.SetBool("isBack", false);
-            //animator.SetBool("isFront", false);
-            Debug.DrawRay(transform.position, -transform.right, Color.red, 0.5f);
             animator.SetFloat("xDir", move.x);
             animator.SetFloat("yDir", 0);
         }
         else if (move.y > 0) //위
         {
-            //animator.SetBool("isRight", false);
-            //animator.SetBool("isLeft", false);
-            //animator.SetBool("isBack", true);
-            //animator.SetBool("isFront", false);
-            Debug.DrawRay(transform.position, transform.up, Color.red, 0.5f);
             animator.SetFloat("xDir", 0);
             animator.SetFloat("yDir", move.y);
         }
         else if (move.y < 0) //아래
         {
-            //animator.SetBool("isRight", false);
-            //animator.SetBool("isLeft", false);
-            //animator.SetBool("isBack", false);
-            //animator.SetBool("isFront", true);
-            Debug.DrawRay(transform.position, -transform.up, Color.red, 0.5f);
             animator.SetFloat("xDir", 0);
             animator.SetFloat("yDir", move.y);
         }

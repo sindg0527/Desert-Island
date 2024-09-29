@@ -178,7 +178,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '[SINGLE_BULLET_RELOADING]_Sniper_rifle_[KAR98]_V1.00_0': -8753304370828605597
+      '[SINGLE_BULLET_RELOADING]_Sniper_rifle_[KAR98]_V1.00_1': 6496813073363777153
+      '[SINGLE_BULLET_RELOADING]_Sniper_rifle_[KAR98]_V1.00_2': -2108756303973754918
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

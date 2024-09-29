@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      '[FULL_AUTO_DEMO] Assault_rifle_V1.00_0': -1668277430277465863
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

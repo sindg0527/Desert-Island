@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9198621622049900221}
   - component: {fileID: 5522940681176024455}
   m_Layer: 6
-  m_Name: Axe
+  m_Name: Shovel
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6674386295937086461, guid: 26dd48c04f1021b47a4f60792f5f4434, type: 3}
+  m_Sprite: {fileID: -3766519690804746565, guid: d34ebf13bc83912449c4802111cc6e71, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -126,7 +126,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.3, y: 0.26}
+    oldSize: {x: 0.28, y: 0.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -147,4 +147,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemIndex: 0
-  item: {fileID: 11400000, guid: b7a97311e7cc0b341bdeb4ae4a5ec398, type: 2}
+  item: {fileID: 11400000, guid: fc123799f664143419f3bdce1cff5c09, type: 2}

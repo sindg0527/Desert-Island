@@ -15,6 +15,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     [SerializeField]
     private GameObject go_CountImage;
 
+    Inventory inventory;
+
     // 아이템 이미지의 투명도 조절
     private void SetColor(float _alpha)
     {
@@ -81,15 +83,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                 else if (item.itemType == Item.ItemType.Equipment)
                 {
                     Debug.Log(item.itemName + " 을 장착했습니다.");
-                    if(ToolManager.instance.GetItem == null)
+                    if(ToolManager.instance.getItem == null)
                     {
-                        ToolManager.instance.GetItem = item.itemPrefab;
+                        ToolManager.instance.getItem = item.itemPrefab;
+                        ToolManager.instance.ToolSprite();
                         ClearSlot();
                     }
                     else
                     {
-                        //AddItem(ToolManager.instance.GetItem, 1);
-                        ToolManager.instance.GetItem = item.itemPrefab;
+                        inventory = gameObject.GetComponent<Inventory>();
+                        inventory.AcquireItem(item);
+                        ToolManager.instance.getItem = item.itemPrefab;
+                        ToolManager.instance.ToolSprite();
                     }
                 }
             }

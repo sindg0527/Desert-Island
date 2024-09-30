@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToolManager : MonoBehaviour
 {
     public static ToolManager instance;
 
-    public GameObject GetItem;
+    public GameObject getItem;
     private Vector2 direction;
     public LayerMask toolMask;
     private Vector2 playerPos;
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField]
     private Inventory theInventory;
@@ -27,10 +29,15 @@ public class ToolManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
     void Update()
     {
         Debug.DrawLine(transform.position, direction, Color.red, 1.0f);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1, toolMask.value);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 0.5f, toolMask.value);
         playerPos = PlayerManager.Instance.transform.position;
         transform.rotation = Quaternion.Euler(0, 0, 0);
         HandRotation();
@@ -46,10 +53,17 @@ public class ToolManager : MonoBehaviour
                 Destroy(hit.collider.gameObject);
             }
         }
-
         //hit.collider.transform.SetParent(transform);
         //hit.collider.transform.localPosition = Vector3.zero;
         //GetItem = hit.collider.gameObject;
+    }
+
+    public void ToolSprite()
+    {
+        if (getItem != null)
+        {
+            spriteRenderer.sprite = getItem.GetComponent<SpriteRenderer>().sprite;
+        }
     }
 
     void HandRotation()
@@ -58,30 +72,29 @@ public class ToolManager : MonoBehaviour
         {
             transform.position = new Vector3(playerPos.x + 0.3f, playerPos.y, 0);
             direction = transform.right;
-            if (GetItem != null)
-            {
-                GetItem.GetComponent<SpriteRenderer>().flipX = false;
-            }
+            spriteRenderer.flipX = false;
         }
         else if (PlayerManager.Instance.move.x < 0)
         {
             transform.position = new Vector3(playerPos.x - 0.3f, playerPos.y, 0);
             direction = -transform.right;
 
-            if (GetItem != null)
+            if (getItem != null)
             {
-                GetItem.GetComponent<SpriteRenderer>().flipX = true;
+                spriteRenderer.flipX = true;
             }
         }
         else if (PlayerManager.Instance.move.y > 0)
         {
-            transform.position = new Vector3(playerPos.x, playerPos.y + 0.3f, 0);
+            transform.position = new Vector3(playerPos.x + 0.4f, playerPos.y, 0);
             direction = transform.up;
+            spriteRenderer.flipX = false;
         }
         else if (PlayerManager.Instance.move.y < 0)
         {
-            transform.position = new Vector3(playerPos.x, playerPos.y - 0.3f, 0);
+            transform.position = new Vector3(playerPos.x - 0.4f, playerPos.y, 0);
             direction = -transform.up;
+            spriteRenderer.flipX = true;
         }
     }
 }

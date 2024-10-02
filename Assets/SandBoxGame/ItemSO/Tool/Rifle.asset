@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80db3f58fa688ad4886e767c2da1efd3, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: 
+  itemName: "\uB77C\uC774\uD50C"
+  itemDesc: "\uB77C\uC774\uD50C\uC785\uB2C8\uB2E4."
+  itemType: 0
+  itemImage: {fileID: 7840408669232993643, guid: a6d579a3ad7430f41adb2dab99ab41cb, type: 3}
+  itemSideImage: {fileID: 0}
+  itemPrefab: {fileID: 6092156472356033748, guid: 1e8b11962100864458219d867932fd38, type: 3}
+  weaponType: Gun
+  itemValue: 2
+  attackPos: {fileID: 2581398401725232008, guid: 1e8b11962100864458219d867932fd38, type: 3}

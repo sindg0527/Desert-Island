@@ -15,8 +15,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     [SerializeField]
     private GameObject go_CountImage;
 
-    Inventory inventory;
-
     // 아이템 이미지의 투명도 조절
     private void SetColor(float _alpha)
     {
@@ -68,6 +66,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
         go_CountImage.SetActive(false);
     }
 
+    //오른쪽 마우스 클릭 이벤트
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -80,21 +79,27 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                     Debug.Log(item.itemName + " 을 사용했습니다.");
                     SetSlotCount(-1);
                 }
-                else if (item.itemType == Item.ItemType.Equipment)
+                else if (item.itemType == Item.ItemType.Equipment) //장비(무기, 도구) 장착
                 {
                     Debug.Log(item.itemName + " 을 장착했습니다.");
                     if(ToolManager.instance.getItem == null)
                     {
-                        ToolManager.instance.getItem = item.itemPrefab;
+                        ToolManager.instance.getItem = item;
                         ToolManager.instance.ToolSprite();
                         ClearSlot();
                     }
                     else
                     {
-                        inventory = gameObject.GetComponent<Inventory>();
-                        inventory.AcquireItem(item);
-                        ToolManager.instance.getItem = item.itemPrefab;
+                        Item changeItem = ToolManager.instance.getItem;
+                        Debug.Log(changeItem.name);
+                        ToolManager.instance.getItem = item;
                         ToolManager.instance.ToolSprite();
+                        if(item.weaponType == "Gun")
+                        {
+                            ToolManager.instance.weaponPos = null;
+                        }
+                        ClearSlot();
+                        AddItem(changeItem);
                     }
                 }
             }
@@ -116,7 +121,9 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     public void OnDrag(PointerEventData eventData)
     {
         if (item != null)
+        {
             DragSlot.instance.transform.position = eventData.position;
+        }
     }
 
     // 마우스 드래그가 끝났을 때 발생하는 이벤트

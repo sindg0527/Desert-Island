@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance;
+
     public static bool invectoryActivated = false;  // 인벤토리 활성화 여부
 
     [SerializeField]
@@ -12,6 +14,19 @@ public class Inventory : MonoBehaviour
     private GameObject go_SlotsParent;  // Slot들의 부모인 Grid Setting 
 
     private Slot[] slots;  // 슬롯들 배열
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {

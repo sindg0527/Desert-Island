@@ -18,7 +18,9 @@ public class Item : ScriptableObject
     public string itemDesc; // 아이템의 설명
     public ItemType itemType; // 아이템 타입
     public Sprite itemImage; // 아이템의 이미지(인벤 토리 안에서 띄울)
+    public Sprite itemSideImage; // 아이템의 옆이미지
     public GameObject itemPrefab;  // 아이템의 프리팹
 
     public string weaponType;  // 무기 타입
+    public int itemValue;
 }

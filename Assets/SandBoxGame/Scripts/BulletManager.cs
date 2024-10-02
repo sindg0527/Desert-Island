@@ -4,37 +4,32 @@ using UnityEngine;
 
 public class BulletManager : MonoBehaviour
 {
-    float BulletSpeed = 10.0f;
+    private Vector3 mousePos;
+    private Camera mainCamera;
     Rigidbody2D rigid;
+    float speed = 10.0f;
 
-    void Start()
+    private void OnEnable()
     {
         rigid = GetComponent<Rigidbody2D>();
 
-        //if (playerController.dir == 0)
-        //{
-        //    rigid.AddForce(new Vector2(BulletSpeed, 0), ForceMode2D.Impulse);
-        //}
-        //else if (playerController.dir == 1)
-        //{
-        //    rigid.AddForce(new Vector2(-BulletSpeed, 0), ForceMode2D.Impulse);
-        //}
-        //else if (playerController.dir == 2)
-        //{
-        //    rigid.AddForce(new Vector2(0, BulletSpeed), ForceMode2D.Impulse);
-        //    transform.localEulerAngles = new Vector3(0, 0, 90);
-        //}
-        //else if (playerController.dir == 3)
-        //{
-        //    rigid.AddForce(new Vector2(0, -BulletSpeed), ForceMode2D.Impulse);
-        //    transform.localEulerAngles = new Vector3(0, 0, 90);
-        //}
+        mainCamera = Camera.main;
+        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-        //Invoke(DestroyObj(), 1000);
+        Vector3 direction = mousePos - transform.position; //총알이 마우스를 바라보게 설정
+        Vector3 rotation = transform.position - mousePos; //총알의 각도
+        rigid.velocity = new Vector2(direction.x, direction.y).normalized * speed; //총알 이동
+        float rotationZ = Mathf.Atan2(rotation.x, rotation.y) * Mathf.Rad2Deg; //방향에 따른 회전
+        transform.rotation = Quaternion.Euler(0, 0, rotationZ + 90); //총알의 회전값
     }
 
-    void DestroyObj()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        ToolManager.instance.ReturnBulletToPool(gameObject);
+        if (collision.tag == "Player")
+        {
+            PlayerManager.Instance.PlayerDamage(2);
+            Debug.Log($"{collision.name}이 2데미지를 입었습니다.");
+        }
     }
 }

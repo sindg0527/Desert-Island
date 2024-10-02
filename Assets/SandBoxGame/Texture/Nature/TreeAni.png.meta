@@ -1,52 +1,55 @@
 fileFormatVersion: 2
-guid: a6d579a3ad7430f41adb2dab99ab41cb
+guid: 5993288d9ad36e641a69e14290ee2af1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3437632706918720640
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_0"
+      213: 2557818624597194641
+    second: AnimatedAutum_0
   - first:
-      213: -6054887766359024739
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_1"
+      213: 790081412059385090
+    second: AnimatedAutum_1
   - first:
-      213: 8488744469458945711
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_2"
+      213: -4403198681420640814
+    second: AnimatedAutum_2
   - first:
-      213: 3798752871554067943
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_3"
+      213: -1113271786920917697
+    second: AnimatedAutum_3
   - first:
-      213: 7840408669232993643
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_4"
+      213: 4330513135964276779
+    second: AnimatedAutum_4
   - first:
-      213: -4829648968521306692
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_5"
+      213: -9103975987351616081
+    second: AnimatedAutum_5
   - first:
-      213: 797195693321596709
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_6"
+      213: -5133996926038840426
+    second: AnimatedAutum_6
   - first:
-      213: -1332079151287474032
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_7"
+      213: -6213532794020143745
+    second: AnimatedAutum_7
   - first:
-      213: 1257895338656753491
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_8"
+      213: -2686139208016437141
+    second: AnimatedAutum_8
   - first:
-      213: -2397798643070442243
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_9"
+      213: 4155055546858711102
+    second: AnimatedAutum_9
   - first:
-      213: -8063334809058327424
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_10"
+      213: 3623089722926631846
+    second: AnimatedAutum_10
   - first:
-      213: -1139811314685803664
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_11"
+      213: 945630398285328544
+    second: AnimatedAutum_11
   - first:
-      213: -3380646906605930318
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_12"
+      213: 8340843931094874653
+    second: AnimatedAutum_12
   - first:
-      213: 423729018211771221
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_13"
+      213: -3048195295869750144
+    second: AnimatedAutum_13
   - first:
-      213: -1764406966484658715
-    second: "\u043E\u0440\u0443\u0436\u0438\u0435_14"
+      213: -8807968933612542515
+    second: AnimatedAutum_14
+  - first:
+      213: -684317898783736659
+    second: AnimatedAutum_15
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +145,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_0"
+      name: AnimatedAutum_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 169
-        width: 56
-        height: 30
+        x: 11
+        y: 0
+        width: 41
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 084a72ccbbce4bf20800000000000000
-      internalID: 3437632706918720640
+      spriteID: 1977ef6bc723f7320800000000000000
+      internalID: 2557818624597194641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_1"
+      name: AnimatedAutum_1
       rect:
         serializedVersion: 2
-        x: 95
-        y: 170
-        width: 73
-        height: 30
+        x: 74
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d9bdf4b18a7b8fba0800000000000000
-      internalID: -6054887766359024739
+      spriteID: 20d4075bbdee6fa00800000000000000
+      internalID: 790081412059385090
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_2"
+      name: AnimatedAutum_2
       rect:
         serializedVersion: 2
-        x: 13
-        y: 138
-        width: 53
-        height: 29
+        x: 138
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,20 +201,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fa68923ae141ec570800000000000000
-      internalID: 8488744469458945711
+      spriteID: 2dd447ed022b4e2c0800000000000000
+      internalID: -4403198681420640814
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_3"
+      name: AnimatedAutum_3
       rect:
         serializedVersion: 2
-        x: 95
-        y: 126
-        width: 66
-        height: 37
+        x: 202
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,20 +222,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7eda97a2c91e7b430800000000000000
-      internalID: 3798752871554067943
+      spriteID: f354d1a453ddc80f0800000000000000
+      internalID: -1113271786920917697
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_4"
+      name: AnimatedAutum_4
       rect:
         serializedVersion: 2
-        x: 7
-        y: 106
-        width: 74
-        height: 30
+        x: 266
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -240,20 +243,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b659687f42abecc60800000000000000
-      internalID: 7840408669232993643
+      spriteID: b28405cc0c2191c30800000000000000
+      internalID: 4330513135964276779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_5"
+      name: AnimatedAutum_5
       rect:
         serializedVersion: 2
-        x: 95
-        y: 95
-        width: 78
-        height: 29
+        x: 330
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,20 +264,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cbda4790ad3a9fcb0800000000000000
-      internalID: -4829648968521306692
+      spriteID: fa5883e031e28a180800000000000000
+      internalID: -9103975987351616081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_6"
+      name: AnimatedAutum_6
       rect:
         serializedVersion: 2
-        x: 20
-        y: 67
-        width: 7
-        height: 12
+        x: 394
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -282,20 +285,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 52fa7e46245301b00800000000000000
-      internalID: 797195693321596709
+      spriteID: 69be1813ff060c8b0800000000000000
+      internalID: -5133996926038840426
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_7"
+      name: AnimatedAutum_7
       rect:
         serializedVersion: 2
-        x: 33
-        y: 71
-        width: 20
-        height: 7
+        x: 458
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -303,20 +306,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0986ecec111838de0800000000000000
-      internalID: -1332079151287474032
+      spriteID: f7d503438d815c9a0800000000000000
+      internalID: -6213532794020143745
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_8"
+      name: AnimatedAutum_8
       rect:
         serializedVersion: 2
-        x: 55
-        y: 69
-        width: 13
-        height: 9
+        x: 523
+        y: 0
+        width: 41
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,20 +327,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 35761495521f47110800000000000000
-      internalID: 1257895338656753491
+      spriteID: b606ee04f9ae8bad0800000000000000
+      internalID: -2686139208016437141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_9"
+      name: AnimatedAutum_9
       rect:
         serializedVersion: 2
-        x: 17
-        y: 58
-        width: 13
-        height: 7
+        x: 588
+        y: 0
+        width: 41
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -345,20 +348,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df46fd496de49bed0800000000000000
-      internalID: -2397798643070442243
+      spriteID: e38a7846109b9a930800000000000000
+      internalID: 4155055546858711102
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_10"
+      name: AnimatedAutum_10
       rect:
         serializedVersion: 2
-        x: 34
-        y: 58
-        width: 20
-        height: 8
+        x: 652
+        y: 0
+        width: 41
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -366,20 +369,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 084490966b7491090800000000000000
-      internalID: -8063334809058327424
+      spriteID: 6ab096438ecc74230800000000000000
+      internalID: 3623089722926631846
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_11"
+      name: AnimatedAutum_11
       rect:
         serializedVersion: 2
-        x: 55
-        y: 58
-        width: 12
-        height: 9
+        x: 716
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -387,20 +390,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0738e25f5a39e20f0800000000000000
-      internalID: -1139811314685803664
+      spriteID: 0a0bb9a46dd8f1d00800000000000000
+      internalID: 945630398285328544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_12"
+      name: AnimatedAutum_12
       rect:
         serializedVersion: 2
-        x: 19
-        y: 43
-        width: 10
-        height: 12
+        x: 780
+        y: 0
+        width: 42
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -408,20 +411,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b8fab4cc878511d0800000000000000
-      internalID: -3380646906605930318
+      spriteID: d1af1e71d51a0c370800000000000000
+      internalID: 8340843931094874653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_13"
+      name: AnimatedAutum_13
       rect:
         serializedVersion: 2
-        x: 34
-        y: 45
-        width: 20
-        height: 8
+        x: 844
+        y: 0
+        width: 41
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -429,20 +432,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 553a98b0c4361e500800000000000000
-      internalID: 423729018211771221
+      spriteID: 084baa74782a2b5d0800000000000000
+      internalID: -3048195295869750144
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\u043E\u0440\u0443\u0436\u0438\u0435_14"
+      name: AnimatedAutum_14
       rect:
         serializedVersion: 2
-        x: 55
-        y: 45
-        width: 11
-        height: 10
+        x: 908
+        y: 0
+        width: 41
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -450,8 +453,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e5157356319387e0800000000000000
-      internalID: -1764406966484658715
+      spriteID: dc52957ebeec3c580800000000000000
+      internalID: -8807968933612542515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnimatedAutum_15
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 0
+        width: 41
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dacbd892f70d086f0800000000000000
+      internalID: -684317898783736659
       vertices: []
       indices: 
       edges: []
@@ -467,21 +491,22 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\u043E\u0440\u0443\u0436\u0438\u0435_0": 3437632706918720640
-      "\u043E\u0440\u0443\u0436\u0438\u0435_1": -6054887766359024739
-      "\u043E\u0440\u0443\u0436\u0438\u0435_10": -8063334809058327424
-      "\u043E\u0440\u0443\u0436\u0438\u0435_11": -1139811314685803664
-      "\u043E\u0440\u0443\u0436\u0438\u0435_12": -3380646906605930318
-      "\u043E\u0440\u0443\u0436\u0438\u0435_13": 423729018211771221
-      "\u043E\u0440\u0443\u0436\u0438\u0435_14": -1764406966484658715
-      "\u043E\u0440\u0443\u0436\u0438\u0435_2": 8488744469458945711
-      "\u043E\u0440\u0443\u0436\u0438\u0435_3": 3798752871554067943
-      "\u043E\u0440\u0443\u0436\u0438\u0435_4": 7840408669232993643
-      "\u043E\u0440\u0443\u0436\u0438\u0435_5": -4829648968521306692
-      "\u043E\u0440\u0443\u0436\u0438\u0435_6": 797195693321596709
-      "\u043E\u0440\u0443\u0436\u0438\u0435_7": -1332079151287474032
-      "\u043E\u0440\u0443\u0436\u0438\u0435_8": 1257895338656753491
-      "\u043E\u0440\u0443\u0436\u0438\u0435_9": -2397798643070442243
+      AnimatedAutum_0: 2557818624597194641
+      AnimatedAutum_1: 790081412059385090
+      AnimatedAutum_10: 3623089722926631846
+      AnimatedAutum_11: 945630398285328544
+      AnimatedAutum_12: 8340843931094874653
+      AnimatedAutum_13: -3048195295869750144
+      AnimatedAutum_14: -8807968933612542515
+      AnimatedAutum_15: -684317898783736659
+      AnimatedAutum_2: -4403198681420640814
+      AnimatedAutum_3: -1113271786920917697
+      AnimatedAutum_4: 4330513135964276779
+      AnimatedAutum_5: -9103975987351616081
+      AnimatedAutum_6: -5133996926038840426
+      AnimatedAutum_7: -6213532794020143745
+      AnimatedAutum_8: -2686139208016437141
+      AnimatedAutum_9: 4155055546858711102
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,15 +13,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "Fire",
-                    "type": "Button",
-                    "id": "96ad3fb7-d14e-448e-9432-986fd68e4c10",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -79,14 +70,31 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
-                },
+                }
+            ]
+        },
+        {
+            "name": "Weapon",
+            "id": "e24cdb52-edcb-4c70-8928-03d0317b7f93",
+            "actions": [
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "9abebba8-b63c-41bd-a27d-029c4f5b707e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
                 {
                     "name": "",
-                    "id": "765f09c4-8e45-4a07-a41a-326e5252c2f8",
+                    "id": "2e3b82f2-a86e-4929-aeeb-aa1c807ee256",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Player",
+                    "groups": "Weapon",
                     "action": "Fire",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -104,6 +112,17 @@
                     "isOptional": false,
                     "isOR": false
                 },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        },
+        {
+            "name": "Weapon",
+            "bindingGroup": "Weapon",
+            "devices": [
                 {
                     "devicePath": "<Mouse>",
                     "isOptional": false,

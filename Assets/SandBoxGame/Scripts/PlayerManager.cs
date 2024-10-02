@@ -86,11 +86,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void OnFire()
-    {
-        //Instantiate(bulletObj, bulletPos.transform.position, Quaternion.identity);
-    }
-
     IEnumerator DamageCount() //무적시간
     {
         playerSpeed = 2.0f;

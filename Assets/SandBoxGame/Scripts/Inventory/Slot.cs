@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using System.ComponentModel.Design;
 
 public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
@@ -55,7 +56,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
     }
 
     // 해당 슬롯 하나 삭제
-    private void ClearSlot()
+    public void ClearSlot()
     {
         item = null;
         itemCount = 0;
@@ -82,24 +83,58 @@ public class Slot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDra
                 else if (item.itemType == Item.ItemType.Equipment) //장비(무기, 도구) 장착
                 {
                     Debug.Log(item.itemName + " 을 장착했습니다.");
-                    if(ToolManager.instance.getItem == null)
+                    if(ToolManager.instance.getItem == null) //아무것도 안들고 있다면 장비 장착
                     {
                         ToolManager.instance.getItem = item;
                         ToolManager.instance.ToolSprite();
+                        Inventory.instance.equipmentSlot.AddItem(item);
                         ClearSlot();
                     }
-                    else
+                    else if (this.gameObject.name == "EquipmentSlot")
+                    {
+                        Debug.Log("아이템 해제");
+                        ToolManager.instance.theInventory.AcquireItem(item);
+                        ToolManager.instance.getItem = null;
+                        ToolManager.instance.ToolSprite();
+                        Inventory.instance.equipmentSlot.ClearSlot();
+                    }
+                    else //장비를 장착하고 있다면 장비 교체
                     {
                         Item changeItem = ToolManager.instance.getItem;
                         Debug.Log(changeItem.name);
                         ToolManager.instance.getItem = item;
                         ToolManager.instance.ToolSprite();
-                        if(item.weaponType == "Gun")
+                        Inventory.instance.equipmentSlot.AddItem(item);
+                        if (item.weaponType == "Gun")
                         {
                             ToolManager.instance.weaponPos = null;
                         }
                         ClearSlot();
                         AddItem(changeItem);
+                    }
+                }
+
+                else if (item.itemType == Item.ItemType.Furniture) //가구 설치
+                {
+                    if(PlayerManager.Instance.direction == PlayerManager.PlayerDirection.right)
+                    {
+                        Instantiate(item.itemPrefab, PlayerManager.Instance.transform.position + new Vector3(0.5f, 0, 0), Quaternion.identity);
+                        SetSlotCount(-1);
+                    }
+                    else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.left)
+                    {
+                        Instantiate(item.itemPrefab, PlayerManager.Instance.transform.position + new Vector3(-0.5f, 0, 0), Quaternion.identity);
+                        SetSlotCount(-1);
+                    }
+                    else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.up)
+                    {
+                        Instantiate(item.itemPrefab, PlayerManager.Instance.transform.position + new Vector3(0, 0.4f, 0), Quaternion.identity);
+                        SetSlotCount(-1);
+                    }
+                    else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.down)
+                    {
+                        Instantiate(item.itemPrefab, PlayerManager.Instance.transform.position + new Vector3(0, -0.6f, 0), Quaternion.identity);
+                        SetSlotCount(-1);
                     }
                 }
             }

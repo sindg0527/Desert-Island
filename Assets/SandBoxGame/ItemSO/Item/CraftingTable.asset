@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80db3f58fa688ad4886e767c2da1efd3, type: 3}
-  m_Name: Shovel
+  m_Name: CraftingTable
   m_EditorClassIdentifier: 
-  itemName: "\uC0BD"
-  itemDesc: "\uC0BD\uC785\uB2C8\uB2E4."
+  itemName: "\uC81C\uC791\uB300"
+  itemDesc: "\uC544\uC774\uD15C\uC744 \uC81C\uC791\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
   itemType: 3
-  itemImage: {fileID: -3766519690804746565, guid: d34ebf13bc83912449c4802111cc6e71, type: 3}
+  itemImage: {fileID: -6376348432289402992, guid: db7d94f448b5ad547b9a42ee5caa0892, type: 3}
   itemSideImage: {fileID: 0}
-  itemPrefab: {fileID: 7298054697302966641, guid: 1a2c810b226d4f648ab6aa0896892200, type: 3}
+  itemPrefab: {fileID: 7298929010564003563, guid: 4e1785682f444534d96abc7e4995e3d5, type: 3}
   weaponType: 
   itemValue: 0

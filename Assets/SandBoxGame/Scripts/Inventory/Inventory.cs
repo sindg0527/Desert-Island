@@ -13,7 +13,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject go_SlotsParent;  // Slot들의 부모인 Grid Setting 
 
-    private Slot[] slots;  // 슬롯들 배열
+    public Slot[] slots;  // 슬롯들 배열
+    public Slot equipmentSlot;
 
     void Awake()
     {

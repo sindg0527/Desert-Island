@@ -20,7 +20,7 @@ public class ToolManager : MonoBehaviour
     public Transform weaponPos = null;
 
     [SerializeField]
-    private Inventory theInventory;
+    public Inventory theInventory;
 
     void Awake()
     {
@@ -60,9 +60,9 @@ public class ToolManager : MonoBehaviour
         {
             Debug.Log("E 버튼 클릭");
 
-            if (hit.collider != null && hit.collider.tag != "Player")
+            if (hit.collider != null)
             {
-                if(hit.collider.tag == "Item")
+                if (hit.collider.tag == "Item")
                 {
                     Debug.Log(hit.collider.GetComponent<ItemPickUp>().item.itemName + " 획득 했습니다.");
                     theInventory.AcquireItem(hit.collider.GetComponent<ItemPickUp>().item);  // 인벤토리 넣기
@@ -78,6 +78,21 @@ public class ToolManager : MonoBehaviour
                             hit.collider.GetComponent<TreeManager>().CutTree();
                         }
                     }
+                }
+
+                if (hit.collider.tag == "Furniture") //해당 오브젝트가 가구일 때
+                {
+                    if (getItem == null)
+                    {                        
+                        GameManager.Instance.CraftingTableOn(); //제작대 열기
+                    }
+                    else if (getItem.name == "Axe") //도끼를 장착하고 있다면 실행
+                    {
+                        Debug.Log(hit.collider.GetComponent<ItemPickUp>().item.itemName + " 획득 했습니다.");
+                        theInventory.AcquireItem(hit.collider.GetComponent<ItemPickUp>().item);  // 인벤토리 넣기
+                        Destroy(hit.collider.gameObject);
+                    }
+
                 }
             }
         }
@@ -98,17 +113,21 @@ public class ToolManager : MonoBehaviour
                 //BulletPool();
             }
         }
+        else
+        {
+            spriteRenderer.sprite = null;
+        }
     }
 
     void HandRotation()
     {
-        if( PlayerManager.Instance.move.x > 0)
+        if( PlayerManager.Instance.direction == PlayerManager.PlayerDirection.right)
         {
             transform.position = new Vector3(playerPos.x + 0.3f, playerPos.y, 0);
             direction = transform.right;
             spriteRenderer.flipX = false;
         }
-        else if (PlayerManager.Instance.move.x < 0)
+        else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.left)
         {
             transform.position = new Vector3(playerPos.x - 0.3f, playerPos.y, 0);
             direction = -transform.right;
@@ -118,13 +137,13 @@ public class ToolManager : MonoBehaviour
                 spriteRenderer.flipX = true;
             }
         }
-        else if (PlayerManager.Instance.move.y > 0)
+        else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.up)
         {
             transform.position = new Vector3(playerPos.x + 0.4f, playerPos.y, 0);
             direction = transform.up;
             spriteRenderer.flipX = false;
         }
-        else if (PlayerManager.Instance.move.y < 0)
+        else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.down)
         {
             transform.position = new Vector3(playerPos.x - 0.4f, playerPos.y, 0);
             direction = -transform.up;

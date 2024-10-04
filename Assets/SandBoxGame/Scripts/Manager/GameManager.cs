@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject pauseMenu;
     public GameObject settingMenu;
+    public GameObject craftingTable;
 
     private bool isPause = false;
+    private bool OncraftingTable = false;
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         settingMenu.SetActive(false);
+        craftingTable.SetActive(false);
     }
 
     private void Update()
@@ -38,13 +41,20 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                if (!isPause)
+                if(OncraftingTable)
                 {
-                    PauseGame();
+                    CraftingTableOff();
                 }
                 else
                 {
-                    ReGame();
+                    if (!isPause)
+                    {
+                        PauseGame();
+                    }
+                    else if (isPause)
+                    {
+                        ReGame();
+                    }
                 }
             }
         }
@@ -87,10 +97,23 @@ public class GameManager : MonoBehaviour
         Application.Quit();
     }
 
-    public void GoBackButton()
+    public void GoBackButton() //뒤로가기
     {
         pauseMenu.SetActive(true);
         settingMenu.SetActive(false);
         Debug.Log("뒤로 가기");
+    }
+
+    public void CraftingTableOn()
+    {
+        craftingTable.SetActive(true);
+        OncraftingTable = true;
+        PlayerManager.Instance.playerPause = true;
+    }
+    public void CraftingTableOff()
+    {
+        craftingTable.SetActive(false);
+        OncraftingTable = false;
+        PlayerManager.Instance.playerPause = false;
     }
 }

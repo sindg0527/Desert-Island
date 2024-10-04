@@ -10,17 +10,25 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance;
+    public enum PlayerDirection
+    {
+        right,
+        left,
+        up,
+        down
+    }
 
     [Header("-----Player Settings-----")]
     public float playerSpeed = 5.0f;
     public int playerHP = 100;
-    public bool isDamage = false;
-    public bool isDie = false;
-    public bool isAction = false;
 
-    public Vector3 move;
+    public Vector3 move; //플레이어 이동
+    public PlayerDirection direction; //플레이어의 방향
+    public bool playerPause = false;
+    private bool isDamage = false;
+    private bool isDie = false;
+
     SpriteRenderer spriteRenderer;
-
     Animator animator;
 
     private void Awake()
@@ -51,7 +59,7 @@ public class PlayerManager : MonoBehaviour
     {
         Vector2 input = value.Get<Vector2>(); //(x, y)
 
-        if (input != null)
+        if (input != null && !playerPause)
         {
             move = new Vector3(input.x, input.y, 0); //(1, 0, 0), (-1, 0, 0)
             animator.SetBool("isMove", true);
@@ -66,21 +74,25 @@ public class PlayerManager : MonoBehaviour
     {
         if (move.x > 0) //오른쪽
         {
+            direction = PlayerDirection.right;
             animator.SetFloat("xDir", move.x);
             animator.SetFloat("yDir", 0);
         }
         else if (move.x < 0) //왼쪽
         {
+            direction = PlayerDirection.left;
             animator.SetFloat("xDir", move.x);
             animator.SetFloat("yDir", 0);
         }
         else if (move.y > 0) //위
         {
+            direction = PlayerDirection.up;
             animator.SetFloat("xDir", 0);
             animator.SetFloat("yDir", move.y);
         }
         else if (move.y < 0) //아래
         {
+            direction = PlayerDirection.down;
             animator.SetFloat("xDir", 0);
             animator.SetFloat("yDir", move.y);
         }

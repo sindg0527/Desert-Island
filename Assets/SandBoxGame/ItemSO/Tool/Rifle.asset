@@ -16,8 +16,7 @@ MonoBehaviour:
   itemDesc: "\uB77C\uC774\uD50C\uC785\uB2C8\uB2E4."
   itemType: 0
   itemImage: {fileID: 7840408669232993643, guid: a6d579a3ad7430f41adb2dab99ab41cb, type: 3}
-  itemSideImage: {fileID: 0}
+  itemSideImage: {fileID: 193216625550629930, guid: 7f3e3081b428fd942bf7139477b7d152, type: 3}
   itemPrefab: {fileID: 6092156472356033748, guid: 1e8b11962100864458219d867932fd38, type: 3}
   weaponType: Gun
   itemValue: 2
-  attackPos: {fileID: 2581398401725232008, guid: 1e8b11962100864458219d867932fd38, type: 3}

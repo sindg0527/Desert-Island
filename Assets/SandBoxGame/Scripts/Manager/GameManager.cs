@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject settingMenu;
     public GameObject craftingTable;
+    public int playerCoin = 0;
+
+    public Text coinText;
 
     private bool isPause = false;
     private bool OncraftingTable = false;
@@ -58,6 +61,7 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+        coinText.text = playerCoin.ToString();
     }
 
     public void PauseGame() //일시정지 창 켜기

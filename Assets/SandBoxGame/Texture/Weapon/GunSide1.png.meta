@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8f8a5fed18630ef46bad25ae775e7976
+guid: 7f3e3081b428fd942bf7139477b7d152
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2982176973284258414
-    second: Screenshot02_0
+      213: 193216625550629930
+    second: GunSide1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Screenshot02_0
+      name: GunSide1_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 1917
-        height: 1075
+        y: 2
+        width: 34
+        height: 73
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29dca02d7dd2d96d0800000000000000
-      internalID: -2982176973284258414
+      spriteID: a2c15aa4f717ea200800000000000000
+      internalID: 193216625550629930
       vertices: []
       indices: 
       edges: []
@@ -131,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Screenshot02_0: -2982176973284258414
+      GunSide1_0: 193216625550629930
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

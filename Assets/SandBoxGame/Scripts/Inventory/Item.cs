@@ -7,11 +7,11 @@ public class Item : ScriptableObject
 {
     public enum ItemType  // 아이템 타입
     {
-        Equipment,
-        Used,
-        Ingredient,
-        Furniture,
-        ETC,
+        Equipment, //장비
+        Used,      //소모품
+        Ingredient,//재료
+        Furniture,//가구
+        ETC,      //기타
     }
 
     public string itemName; // 아이템의 이름

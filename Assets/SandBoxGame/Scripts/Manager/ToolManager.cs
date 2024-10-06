@@ -3,13 +3,23 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using UnityEngine.InputSystem;
 
 public class ToolManager : MonoBehaviour
 {
     public static ToolManager instance;
 
+    [Header("Gun Settings")]
+    public bool isFire = false; //총을 쏘는 여부
+    private Camera mainCamera;
+    private Vector3 mousePos;
+    Vector2 rayDirection; //마우스 레이의 방향
+    private float timer; //시간저장변수
+    private float delayTime = 0.2f;
+
     public Item getItem;
-    private Vector2 direction;
+    private Vector2 direction; //캐릭터 기준 레이의 방향
     public LayerMask toolMask;
     private Vector2 playerPos;
     private SpriteRenderer spriteRenderer;
@@ -38,6 +48,7 @@ public class ToolManager : MonoBehaviour
     private void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        mainCamera = Camera.main;
 
         bulletPool = new List<GameObject>();
         for (int i = 0; i < poolSize; i++)
@@ -94,6 +105,38 @@ public class ToolManager : MonoBehaviour
                     }
 
                 }
+
+                if (hit.collider.tag == "Box")
+                {
+
+                }
+
+                if (hit.collider.tag == "Coin")
+                {
+                    GameManager.Instance.playerCoin += 100;
+                    Destroy(hit.collider.gameObject);
+                }
+            }
+        }
+
+        mousePos = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 rotation = mousePos - transform.position; //마우스 방향
+
+        //총알 발사 위치에서 마우스 방향으로의 벡터 계산
+        rayDirection = (mousePos - transform.position).normalized;
+
+        float rotationZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        //Atan() : 함수는 좌표평면에서 수평축으로부터 한 점까지의 각도를 구하는 함수
+
+        //transform.rotation = Quaternion.Euler(0, 0, rotationZ); //총구가 마우스를 따라갈 수 있게 각도 변경
+
+        if (!isFire)
+        {
+            timer += Time.deltaTime;
+            if (timer > delayTime)
+            {
+                isFire = true;
+                timer = 0;
             }
         }
         //hit.collider.transform.SetParent(transform);
@@ -105,13 +148,11 @@ public class ToolManager : MonoBehaviour
     {
         if (getItem != null)
         {
-            spriteRenderer.sprite = getItem.itemImage;
-
-            if(getItem.name == "Rifle")
+            if (getItem.weaponType == "Gun")
             {
                 //weaponPos = getItem.itemPrefab.transform.GetChild(0).transform;
-                //BulletPool();
             }
+            spriteRenderer.sprite = getItem.itemImage;
         }
         else
         {
@@ -121,41 +162,96 @@ public class ToolManager : MonoBehaviour
 
     void HandRotation()
     {
-        if( PlayerManager.Instance.direction == PlayerManager.PlayerDirection.right)
+        if (getItem == null || getItem.weaponType != "Gun")
         {
-            transform.position = new Vector3(playerPos.x + 0.3f, playerPos.y, 0);
-            direction = transform.right;
-            spriteRenderer.flipX = false;
-        }
-        else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.left)
-        {
-            transform.position = new Vector3(playerPos.x - 0.3f, playerPos.y, 0);
-            direction = -transform.right;
-
-            if (getItem != null)
+            if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.right)
             {
+                transform.position = new Vector3(playerPos.x + 0.3f, playerPos.y, 0);
+                direction = transform.right;
+                spriteRenderer.flipX = false;
+                spriteRenderer.flipY = false;
+            }
+            else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.left)
+            {
+                transform.position = new Vector3(playerPos.x - 0.3f, playerPos.y, 0);
+                direction = -transform.right;
                 spriteRenderer.flipX = true;
+                spriteRenderer.flipY = false;
+            }
+            else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.up)
+            {
+                transform.position = new Vector3(playerPos.x + 0.4f, playerPos.y, 0);
+                direction = transform.up;
+                spriteRenderer.flipX = false;
+                spriteRenderer.flipY = false;
+            }
+            else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.down)
+            {
+                transform.position = new Vector3(playerPos.x - 0.4f, playerPos.y, 0);
+                direction = -transform.up;
+                spriteRenderer.flipX = true;
+                spriteRenderer.flipY = false;
             }
         }
-        else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.up)
+        else
         {
-            transform.position = new Vector3(playerPos.x + 0.4f, playerPos.y, 0);
-            direction = transform.up;
-            spriteRenderer.flipX = false;
-        }
-        else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.down)
-        {
-            transform.position = new Vector3(playerPos.x - 0.4f, playerPos.y, 0);
-            direction = -transform.up;
-            spriteRenderer.flipX = true;
+            if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.right)
+            {
+                transform.position = new Vector3(playerPos.x + 0.3f, playerPos.y, 0);
+                weaponPos.transform.position = new Vector3(playerPos.x + 0.65f, playerPos.y + 0.05f, 0);
+                direction = transform.right;
+                spriteRenderer.flipX = false;
+                spriteRenderer.flipY = false;
+            }
+            else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.left)
+            {
+                transform.position = new Vector3(playerPos.x - 0.3f, playerPos.y, 0);
+                weaponPos.transform.position = new Vector3(playerPos.x + -0.65f, playerPos.y + 0.05f, 0);
+                direction = -transform.right;
+                spriteRenderer.flipX = true;
+                spriteRenderer.flipY = false;
+            }
+            else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.up)
+            {
+                transform.position = new Vector3(playerPos.x + 0.3f, playerPos.y, 0);
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+                weaponPos.transform.position = new Vector3(playerPos.x + 0.36f, playerPos.y + 0.35f, 0);
+                direction = transform.up;
+                spriteRenderer.flipX = false;
+                spriteRenderer.flipY = true;
+            }
+            else if (PlayerManager.Instance.direction == PlayerManager.PlayerDirection.down)
+            {
+                transform.position = new Vector3(playerPos.x - 0.25f, playerPos.y - 0.1f, 0);
+                transform.rotation = Quaternion.Euler(0, 0, 90);
+                weaponPos.transform.position = new Vector3(playerPos.x - 0.31f, playerPos.y - 0.45f, 0);
+                direction = -transform.up;
+                spriteRenderer.flipX = true;
+                spriteRenderer.flipY = false;
+            }
         }
     }
 
     void OnFire()
     {
-        Debug.Log("발사");
+        if (getItem != null)
+        {
+            if (isFire && getItem.weaponType == "Gun")
+            {
+                GameObject bullet = GetBulletFromPool();
+                if (bullet != null)
+                {
+                    bullet.transform.position = weaponPos.position;
+                    //bullet.transform.rotation = weaponPos.rotation;
+                    bullet.SetActive(true);
+                }
+                isFire = false;
+                SoundManager.instance.PlaySFX("Shot");
+            }
+        }
     }
 
+    //풀에서 비활성화된 총알을 가져오는 함수
     GameObject GetBulletFromPool()
     {
         foreach (GameObject bullet in bulletPool)
@@ -167,17 +263,6 @@ public class ToolManager : MonoBehaviour
         }
         //풀에 사용할 수 있는 총알이 없으면 Null 반환
         return null;
-    }
-
-    void BulletPool() //총알 발사 위치
-    {
-        GameObject bullet = GetBulletFromPool();
-        if (bullet != null)
-        {
-            bullet.transform.position = weaponPos.position;
-            bullet.transform.rotation = weaponPos.rotation;
-            bullet.SetActive(true);
-        }
     }
 
     public void ReturnBulletToPool(GameObject bullet) //총알을 처음으로 되돌리기위한 함수

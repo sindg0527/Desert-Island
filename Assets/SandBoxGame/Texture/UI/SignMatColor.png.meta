@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8f8a5fed18630ef46bad25ae775e7976
+guid: b8aa73f2c23f38145a05ebf863f9d19d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2982176973284258414
-    second: Screenshot02_0
+      213: 174460507614310338
+    second: SignMatColor_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,22 +100,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Screenshot02_0
+      name: Board1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1917
-        height: 1075
+        x: 15
+        y: 454
+        width: 61
+        height: 554
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 29dca02d7dd2d96d0800000000000000
-      internalID: -2982176973284258414
+      spriteID: 2cf6fa748eecb6200800000000000000
+      internalID: 174460507614310338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Board2
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 724
+        width: 374
+        height: 283
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ff94c5baa9c2aa43bae83c2e2db69af
+      internalID: 358593611
       vertices: []
       indices: 
       edges: []
@@ -123,7 +144,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 59f5b2f60163381408c48c9e0bbdc22d
     internalID: 0
     vertices: []
     indices: 
@@ -131,7 +152,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Screenshot02_0: -2982176973284258414
+      Board1: 174460507614310338
+      Board2: 358593611
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

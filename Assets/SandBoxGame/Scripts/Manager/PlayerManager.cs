@@ -47,6 +47,7 @@ public class PlayerManager : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -100,31 +101,28 @@ public class PlayerManager : MonoBehaviour
 
     IEnumerator DamageCount() //무적시간
     {
-        playerSpeed = 2.0f;
+        spriteRenderer.material.color = Color.red;
         yield return new WaitForSeconds(0.5f); //이후 코드를 일정시간이 지나고 실행
         isDamage = false;
-        playerSpeed = 3.0f;
         spriteRenderer.material.color = Color.white;
     }
 
     //플레이어 피격
     public void PlayerDamage(int damage)
     {
-        if (!isDamage)
-        {
-            if (playerHP <= 0) //체력이 0이하가 될 때
-            {
-                isDie = true;
-                playerHP = 0;
-            }
-            playerHP -= damage;
-            SoundManager.instance.PlaySFX("hit");
-            //WeaponManager.instance.shakeDuration = 0.1f;
-            //WeaponManager.instance.shakeMagnitude = 0.2f;
-            //StartCoroutine(WeaponManager.instance.Shake(WeaponManager.instance.shakeDuration, WeaponManager.instance.shakeMagnitude));
+        isDamage = true;
 
-            spriteRenderer.material.color = Color.red;
-            StartCoroutine(DamageCount()); //코루틴 실행
+        if (playerHP <= 0) //체력이 0이하가 될 때
+        {
+            isDie = true;
+            playerHP = 0;
         }
+        playerHP -= damage;
+        SoundManager.instance.PlaySFX("Hit");
+        //WeaponManager.instance.shakeDuration = 0.1f;
+        //WeaponManager.instance.shakeMagnitude = 0.2f;
+        //StartCoroutine(WeaponManager.instance.Shake(WeaponManager.instance.shakeDuration, WeaponManager.instance.shakeMagnitude));
+
+        StartCoroutine(DamageCount()); //코루틴 실행
     }
 }

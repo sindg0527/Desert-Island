@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
     public NamedAudio[] SFXClipList;
 
     private Coroutine currentBGMCoroutine; //현재 실행중인 코루틴 추적하는 변수
+    private string nextSceneName;
 
     private void Awake()
     {
@@ -65,20 +66,15 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        string SceneName = SceneManager.GetActiveScene().name; //씬 이름을 가져옴
-        OnSceneLoaded(SceneName);
+        string sceneName = SceneManager.GetActiveScene().name; //씬 이름을 가져옴
     }
 
     public void OnSceneLoaded(string sceneName) //씬 이름을 받아서 BGM을 설정하는 함수
     {
         //씬 이름에 따라 배경음을 재생하는 코드
-        if (sceneName == "TileScene")
+        if (sceneName == "GameScene")
         {
             PlayBGM("Background", 1f);
-        }
-        else if (sceneName == "TileScene2")
-        {
-            PlayBGM("", 1f);
         }
         else
         {
@@ -149,7 +145,6 @@ public class SoundManager : MonoBehaviour
         for (float t = 0; t < duration; t += Time.deltaTime) //점점 소리가 작아짐
         {
             BGMaudioSource.volume = Mathf.Lerp(startVolume, 0f, t / duration);
-            Debug.Log($"시간 : {t}   t/duration : {t / duration} ");
             yield return null;
         }
 
@@ -166,6 +161,7 @@ public class SoundManager : MonoBehaviour
         for (float t = 0; t < duration; t += Time.deltaTime)
         {
             BGMaudioSource.volume = Mathf.Lerp(startVolume, 1f, t / duration);
+            //Mathf.Lerp : 두 float 값 사이의 보간된 float 결과
             yield return null;
         }
         BGMaudioSource.volume = 1f;

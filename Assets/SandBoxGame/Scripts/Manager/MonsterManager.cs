@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 
 public class MonsterManager : MonoBehaviour
 {
@@ -59,36 +60,45 @@ public class MonsterManager : MonoBehaviour
     {
         distanceToTarget = Vector3.Distance(transform.position, target.position); //몬스터와 플레이어의 거리
 
-        if (monsterHP <= 0 && currentState != MonsterState.Die) //몬스터 체력이 0이하가 되면 죽음
+        if (monsterHP <= 0) //몬스터 체력이 0이하가 되면 죽음
         {
             currentState = MonsterState.Die;
         }
-
-        if (distanceToTarget < targetRange)
+        else
         {
-            if (distanceToTarget > attackRange) //플레이어가 공격범위를 벗어나면 추격
+            if (distanceToTarget < targetRange)
             {
-                StartCoroutine(TransitionState(MonsterState.Chase));
+                if (distanceToTarget > attackRange) //플레이어가 공격범위를 벗어나면 추격
+                {
+                    currentState = MonsterState.Chase;
+                }
+                else if (distanceToTarget <= attackRange)
+                {
+                    currentState = MonsterState.Attack;
+                }
             }
-            else if (distanceToTarget <= attackRange)
+            else
             {
-                StartCoroutine(TransitionState(MonsterState.Attack));
+                currentState = MonsterState.Idle;
             }
         }
 
         switch (currentState)
         {
             case MonsterState.Chase:
-                Chase();
+                if (!isWaiting)
+                    Chase();
                 break;
             case MonsterState.Attack:
-                Attack();
+                if (!isWaiting)
+                    Attack();
+                StartCoroutine(TransitionState(MonsterState.Chase));
                 break;
             case MonsterState.Die:
                 Die();
                 break;
             case MonsterState.Idle:
-                if (!isWaiting)
+                //if (!isWaiting)
                 {
                     Idle();
                 }

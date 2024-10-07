@@ -23,6 +23,6 @@ public class Item : ScriptableObject
     public GameObject itemPrefab;  // 아이템의 프리팹
 
     public string weaponType;  // 무기 타입
-    public int itemValue;
-    public int price;
+    public int itemValue; //아이템에 필요한 값(데미지, 회복량 등)
+    public int price; //상점에서 구입 및 판매할 값
 }

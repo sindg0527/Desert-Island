@@ -69,7 +69,7 @@ public class TutorialsManager : MonoBehaviour
 
     public void HideTutorial()
     {
-        if(textNumber == 0)
+        if(textNumber % 3 == 0)
         {
             tutorialPanel[textNumber % 3].SetActive(false); // 패널 비활성화
         }

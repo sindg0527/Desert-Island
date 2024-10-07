@@ -88,11 +88,13 @@ public class GameManager : MonoBehaviour
 
     public void ContinueButton() //esc - 계속하기
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         ReGame();
     }
 
     public void SettingButton() //esc - 설정
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         pauseMenu.SetActive(false);
         settingMenu.SetActive(true);
         Debug.Log("설정");
@@ -100,6 +102,7 @@ public class GameManager : MonoBehaviour
 
     public void ExitGameButton() //esc - 게임종료
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         pauseMenu.SetActive(false);
         isPause = false;
         Time.timeScale = 1;
@@ -109,6 +112,7 @@ public class GameManager : MonoBehaviour
 
     public void GoBackButton() //뒤로가기
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         pauseMenu.SetActive(true);
         settingMenu.SetActive(false);
         Debug.Log("뒤로 가기");

@@ -35,6 +35,7 @@ public class SceneController : MonoBehaviour
 
     public void GameStart() //게임시작 : GameScene 호출
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex; //현재 씬의 빌드 인덱스 가져오기
 
         //로딩창, 페이드인 페이드아웃 필요
@@ -44,17 +45,20 @@ public class SceneController : MonoBehaviour
 
     public void GameSetting()
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         SettingsUI.SetActive(true);
     }
 
     public void GoBackButton()
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         SettingsUI.SetActive(false);
         Debug.Log("뒤로 가기");
     }
 
     public void GameExit()
     {
+        SoundManager.instance.PlaySFX("ButtonClick");
         Application.Quit();
     }
 

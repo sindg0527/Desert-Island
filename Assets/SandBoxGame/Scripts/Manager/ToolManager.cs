@@ -27,7 +27,7 @@ public class ToolManager : MonoBehaviour
     public int poolSize = 10; //오브젝트 풀링 사이즈
     private List<GameObject> bulletPool; //오브젝트 풀 리스트
     public GameObject bulletObj;
-    public Transform weaponPos = null;
+    public Transform weaponPos;
 
     [SerializeField]
     public Inventory theInventory;
@@ -106,15 +106,19 @@ public class ToolManager : MonoBehaviour
 
                 }
 
-                if (hit.collider.tag == "Box")
-                {
-
-                }
-
                 if (hit.collider.tag == "Coin")
                 {
                     GameManager.Instance.playerCoin += 100;
                     Destroy(hit.collider.gameObject);
+                }
+                if(hit.collider.tag =="Sign")
+                {
+                    TutorialsManager.instance.ShowTutorial();
+                }
+                if (hit.collider.tag == "Shop")
+                {
+                    ShopManager.instance.ShowShop();
+                    GameManager.Instance.OnShop = true;
                 }
             }
         }

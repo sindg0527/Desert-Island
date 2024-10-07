@@ -9,10 +9,8 @@ public class BoxManager : MonoBehaviour
     public GameObject boxPrefab; // 상자 프리팹
     public List<GameObject> itemPrefabs; // 내용물 프리팹 리스트
     public int numberOfBoxes = 5; // 생성할 상자 수
-    public GameObject background; // 배경 오브젝트
-
-    private float spawnAreaWidth; // 생성할 영역의 폭
-    private float spawnAreaHeight; // 생성할 영역의 높이
+    public Transform[] boxSpawnPos;
+    Dictionary<Transform, bool> boxPos = new Dictionary<Transform, bool>();
 
     private void Awake()
     {
@@ -29,18 +27,6 @@ public class BoxManager : MonoBehaviour
 
     void Start()
     {
-        // 배경의 크기를 가져와서 생성 영역을 설정
-        if (background != null)
-        {
-            spawnAreaWidth = background.GetComponent<SpriteRenderer>().bounds.size.x;
-            spawnAreaHeight = background.GetComponent<SpriteRenderer>().bounds.size.y;
-        }
-        else
-        {
-            Debug.LogWarning("배경 오브젝트가 할당되지 않았습니다.");
-            return; // 배경이 없으면 더 이상 진행하지 않음
-        }
-
         for (int i = 0; i < numberOfBoxes; i++)
         {
             SpawnBox();
@@ -49,14 +35,12 @@ public class BoxManager : MonoBehaviour
 
     void SpawnBox()
     {
-        // 랜덤 위치 생성
-        Vector2 randomPosition = new Vector2(
-            Random.Range(-spawnAreaWidth / 2, spawnAreaWidth / 2),
-            Random.Range(-spawnAreaHeight / 2, spawnAreaHeight / 2)
-        );
+        int randomSpawnPos = Random.Range(0, 5);
+
 
         // 상자 생성
-        GameObject newBox = Instantiate(boxPrefab, randomPosition, Quaternion.identity);
+        GameObject newBox = Instantiate(boxPrefab, new Vector3(boxSpawnPos[randomSpawnPos].transform.position.x,
+                boxSpawnPos[randomSpawnPos].transform.position.y, 0), Quaternion.identity);
 
         // 상자 안에 랜덤 내용물 생성
         SpawnItemInBox(newBox);

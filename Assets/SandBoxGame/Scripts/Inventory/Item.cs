@@ -24,4 +24,5 @@ public class Item : ScriptableObject
 
     public string weaponType;  // 무기 타입
     public int itemValue;
+    public int price;
 }

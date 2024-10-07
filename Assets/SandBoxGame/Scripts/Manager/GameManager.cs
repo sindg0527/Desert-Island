@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private bool isPause = false;
     private bool OncraftingTable = false;
+    public bool OnShop = false;
 
     private void Awake()
     {
@@ -47,6 +48,11 @@ public class GameManager : MonoBehaviour
                 if(OncraftingTable)
                 {
                     CraftingTableOff();
+                }
+                else if(OnShop)
+                {
+                    ShopManager.instance.CloseShop();
+                    OnShop = false;
                 }
                 else
                 {

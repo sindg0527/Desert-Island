@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: "\uB098\uBB34"
   itemDesc: "\uB098\uBB34. \uC81C\uC791\uC5D0 \uC0AC\uC6A9\uB428"
-  itemType: 1
+  itemType: 2
   itemImage: {fileID: -8230066881174583576, guid: 75a3cc3acabdff04da2d2028e9c711e0, type: 3}
+  itemSideImage: {fileID: 0}
   itemPrefab: {fileID: 1471703470628963509, guid: 679e33de79b54854183e78e745c5e19b, type: 3}
   weaponType: 
+  itemValue: 0
+  price: 0

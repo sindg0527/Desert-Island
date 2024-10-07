@@ -20,3 +20,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 7298929010564003563, guid: 4e1785682f444534d96abc7e4995e3d5, type: 3}
   weaponType: 
   itemValue: 0
+  price: 100
